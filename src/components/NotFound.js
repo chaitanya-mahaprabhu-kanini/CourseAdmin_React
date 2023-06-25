@@ -10,7 +10,7 @@ const NotFound = (props) => {
         id = "nf">
           <div className="card-body">
             <h1 className="card-title">404</h1>
-            <p className="card-text">Page Not Found</p>
+            <h4 className="card-text">Page Not Found</h4>
           </div>
         </div>
       </div>

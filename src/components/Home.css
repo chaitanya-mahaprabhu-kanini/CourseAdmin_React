@@ -1,0 +1,30 @@
+#choice{
+    height: 100vh;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    column-gap: 2rem;
+    padding: 2rem;
+    background-image: linear-gradient(to bottom right, purple, black);
+}
+
+#choiceCard{
+    height: 100vh;  
+    border: 0.5rem solid black;
+    background-color: black;
+    color: white;
+    transition: all 1s ease-out;
+}
+
+#choiceCard:hover{
+    border: 0.5rem solid white;
+    background-color: white;
+    color: black;
+}
+
+.cardText{
+    height:50%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}

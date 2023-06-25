@@ -1,14 +1,33 @@
-#nf{
-    border: 0.2rem solid plum;
-    transition: all 0.5s ease-out;
+#nf {
+  border: 0.5rem solid black;
+  animation: nf 5s infinite;
+  height: 40vh;
+  width: 60vh;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
 }
 
-#nf:hover{
-    background-color: plum;
+@keyframes nf {
+  0% {
+    background-color: black;
+    color:white;
+  }
+
+  50% {
+    background-color: white;
     border-color: black;
+    color: black;
+  }
+
+  100% {
+    background-color: black;
+    color:white;
+  }
 }
 
-#nfencompass{
-    height: 100vh;
-    border: 0.5rem solid plum;
+#nfencompass {
+  height: 100vh;
+  background-image: linear-gradient(to bottom right, purple, black);
 }
