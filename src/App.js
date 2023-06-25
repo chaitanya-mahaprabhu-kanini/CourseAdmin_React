@@ -4,6 +4,7 @@ import { NotFound } from "./components/NotFound";
 import { Home } from "./components/Home";
 import { StudentRegistration } from "./components/StudentRegistration";
 import { InstructorRegistration } from "./components/InstructorRegistration";
+import { Instructors } from "./components/Instructors";
 
 function App() {
   return (
@@ -12,6 +13,7 @@ function App() {
         <Route path = '' element = {<Home/>} />
         <Route path = '/StudentRegistration' element = {<StudentRegistration/>} />
         <Route path = '/InstructorRegistration' element = {<InstructorRegistration/>} />
+        <Route path = '/Instructors' element = {<Instructors/>} />
         <Route path = '*' element = {<NotFound/>} />
       </Routes>
     </>

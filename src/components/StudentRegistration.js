@@ -5,7 +5,7 @@ import { courses, genders } from "../constants/constants";
 
 const StudentRegistration = (props) => {
   const clickHandler = (event) => {
-
+    window.location = '/Instructors';
   }
 
   return (
@@ -46,7 +46,7 @@ const StudentRegistration = (props) => {
             </select>
           </div>
           <button style = {{marginTop: '0.5rem'}} type="button" className="btn btn-primary" onClick={clickHandler}>
-            Submit
+            Next
           </button>
         </form>
       </div>
