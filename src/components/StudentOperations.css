@@ -1,0 +1,29 @@
+#studentOperations{
+    display: flex;
+    flex-direction: column;
+    padding: 1rem;
+}
+
+#stats{
+    padding-top: 2rem;
+    display: grid;
+    grid-template-columns: repeat(1, 1fr);
+    row-gap: 2rem;
+}
+
+#getStudents{
+    border-radius: 0.5rem;
+    margin-top: 2rem;
+    border: solid 0.5rem black;
+}
+
+#getStudentById{
+    border-radius: 0.5rem;
+    margin-top: 2rem;
+    padding: 1rem;
+    border: solid 0.5rem black;
+}
+
+label{
+    font-weight: bold;
+}

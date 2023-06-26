@@ -7,8 +7,94 @@ export const courses = [
 
 export const genders = [
     'Male',
-    'Female',
-    'Others'
+    'Female'
+];
+
+export const students = [
+  {
+    "name": "John Doe",
+    "age": 25,
+    "gender": "Male",
+    "course": "Machine Learning"
+  },
+  {
+    "name": "Jane Smith",
+    "age": 30,
+    "gender": "Female",
+    "course": "Artificial Intelligence"
+  },
+  {
+    "name": "Alex Johnson",
+    "age": 22,
+    "gender": "Male",
+    "course": "Full Stack"
+  },
+  {
+    "name": "Emily Davis",
+    "age": 28,
+    "gender": "Female",
+    "course": "Data Science"
+  },
+  {
+    "name": "Jane Smith",
+    "age": 30,
+    "gender": "Female",
+    "course": "Machine Learning"
+  },
+  {
+    "name": "Emily Davis",
+    "age": 28,
+    "gender": "Female",
+    "course": "Artificial Intelligence"
+  },
+  {
+    "name": "Olivia Wilson",
+    "age": 24,
+    "gender": "Female",
+    "course": "Full Stack"
+  },
+  {
+    "name": "Sophia Anderson",
+    "age": 27,
+    "gender": "Female",
+    "course": "Data Science"
+  },
+  {
+    "name": "Isabella Martinez",
+    "age": 29,
+    "gender": "Female",
+    "course": "Machine Learning"
+  },
+  {
+    "name": "Ava Lewis",
+    "age": 26,
+    "gender": "Female",
+    "course": "Artificial Intelligence"
+  },
+  {
+    "name": "Mia Ward",
+    "age": 31,
+    "gender": "Female",
+    "course": "Full Stack"
+  },
+  {
+    "name": "Charlotte Hughes",
+    "age": 28,
+    "gender": "Female",
+    "course": "Data Science"
+  },
+  {
+    "name": "Scarlett Ramirez",
+    "age": 23,
+    "gender": "Female",
+    "course": "Machine Learning"
+  },
+  {
+    "name": "Lily Price",
+    "age": 30,
+    "gender": "Female",
+    "course": "Artificial Intelligence"
+  }
 ];
 
 export const instructors = [
