@@ -5,6 +5,7 @@ const Welcome = () => {
   }
 
   const adminClickHandler = (event) => {
+    window.location = '\AdminLogin';
   }
   
   return (

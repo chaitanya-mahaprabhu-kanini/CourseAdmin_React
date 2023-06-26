@@ -6,6 +6,7 @@ import { StudentRegistration } from "./components/StudentRegistration";
 import { InstructorRegistration } from "./components/InstructorRegistration";
 import { Instructors } from "./components/Instructors";
 import { Welcome } from "./components/Welcome";
+import { AdminLoginPage } from "./components/AdminLoginPage";
 
 function App() {
   return (
@@ -16,6 +17,7 @@ function App() {
         <Route path = '/StudentRegistration' element = {<StudentRegistration/>} />
         <Route path = '/InstructorRegistration' element = {<InstructorRegistration/>} />
         <Route path = '/Instructors' element = {<Instructors/>} />
+        <Route path = '/AdminLogin' element = {<AdminLoginPage/>} />
         <Route path = '*' element = {<NotFound/>} />
       </Routes>
     </>

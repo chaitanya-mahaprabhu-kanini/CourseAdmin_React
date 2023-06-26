@@ -1,0 +1,11 @@
+#adminLogin{
+    background-color: white;
+    padding: 3rem 2rem 1rem 2rem;
+    border-radius: 1rem;
+    margin-top: 10%;
+}
+
+#adminButtons{
+    display: flex;
+    flex-direction: row;
+}

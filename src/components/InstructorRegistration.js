@@ -9,9 +9,8 @@ const InstructorRegistration = (props) => {
   }
 
   return (
-    <div id="stuEncompass">
-      <div className="container" id="studentRegistration">
-        <h3 style = {{marginBottom: '2rem'}}>Instructor Information</h3>
+      <div className="container" id="instructorRegistration">
+        <h3 style = {{marginBottom: '1rem'}}>Instructor Information</h3>
         <form>
           <div className="mb-3">
             <label htmlFor="name" className="form-label">
@@ -56,7 +55,6 @@ const InstructorRegistration = (props) => {
           </button>
         </form>
       </div>
-    </div>
   );
 };
 
