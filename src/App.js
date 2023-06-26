@@ -7,6 +7,8 @@ import { InstructorRegistration } from "./components/InstructorRegistration";
 import { Instructors } from "./components/Instructors";
 import { Welcome } from "./components/Welcome";
 import { AdminLoginPage } from "./components/AdminLoginPage";
+import { AdminPage } from "./components/AdminPage";
+import { StatisticsComponent } from "./components/StatisticsComponent";
 
 function App() {
   return (
@@ -18,6 +20,8 @@ function App() {
         <Route path = '/InstructorRegistration' element = {<InstructorRegistration/>} />
         <Route path = '/Instructors' element = {<Instructors/>} />
         <Route path = '/AdminLogin' element = {<AdminLoginPage/>} />
+        <Route path = '/AdminPage' element = {<AdminPage/>} />
+        <Route path = '/Statistics' element = {<StatisticsComponent/>} />
         <Route path = '*' element = {<NotFound/>} />
       </Routes>
     </>

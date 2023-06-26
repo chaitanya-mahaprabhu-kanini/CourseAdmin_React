@@ -1,0 +1,21 @@
+#outer{
+    padding: 1rem;
+    width: 100vw;
+    border-radius: 1rem;
+    display: flex;
+    justify-content: space-between;
+}
+
+#start{
+    transition: all 2s ease-in;
+    width:80vw;
+    height: 2rem;
+    border-radius: 1rem;
+}
+
+#end{
+    transition: all 2s ease-in;
+    width:50vw;
+    height: 2rem;
+    border-radius: 1rem;
+}
