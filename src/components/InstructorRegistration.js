@@ -5,7 +5,7 @@ import { courses, genders } from "../constants/constants";
 
 const InstructorRegistration = (props) => {
   const clickHandler = (event) => {
-
+    window.location = '/';
   }
 
   return (
