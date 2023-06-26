@@ -9,17 +9,17 @@ const Choice = (props) => {
     <>
       <div id="choice">
         <a href = "/StudentRegistration">
-        <div className="card h-50" id="choiceCard">
-          <div className="card-body" class="cardText">
-            <h1 class="cardTitle">Student</h1>
+        <div id="choiceCard" className = "frosted">
+          <div className="cardText">
+            <h1>Student</h1>
           </div>
         </div>
         </a>
 
         <a href = "/InstructorRegistration">
-        <div className="card h-50" id="choiceCard">
-          <div className="card-body" class="cardText">
-            <h1 class="cardTitle">Instructor</h1>
+        <div id="choiceCard" className = "frosted">
+          <div className="cardText">
+            <h1>Instructor</h1>
           </div>
         </div>
         </a>

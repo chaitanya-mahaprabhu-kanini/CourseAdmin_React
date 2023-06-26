@@ -8,8 +8,6 @@
 }
 
 #choiceCard{
-    border: 0.2rem solid white;
-    background-color: black;
     color: white;
     transition: all 1s ease-out;
     display: flex;
@@ -17,12 +15,11 @@
     align-items: center;
     margin-top: 25%;
     border-radius: 2rem;
+    height: 40vh;
 }
 
 #choiceCard:hover{
-    border: 0.2rem solid white;
-    background-color: white;
-    color: black;
+    backdrop-filter: blur(0px);
 }
 
 .cardText{
@@ -35,4 +32,12 @@
 
 a{
     text-decoration: none;
+}
+
+.frosted{
+    border-radius: 1rem;
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
 }

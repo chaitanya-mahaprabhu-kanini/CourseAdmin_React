@@ -9,7 +9,7 @@ const InstructorRegistration = (props) => {
   }
 
   return (
-      <div className="container" id="instructorRegistration">
+      <div className="container frosted" id="instructorRegistration">
         <h3 style = {{marginBottom: '1rem'}}>Instructor Information</h3>
         <form>
           <div className="mb-3">

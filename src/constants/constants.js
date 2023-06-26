@@ -14,7 +14,7 @@ export const genders = [
 export const instructors = [
     {
       "id": "1",
-      "name": "Japan",
+      "name": "Magnus",
       "age": "22",
       "gender": "male",
       "years": "2"

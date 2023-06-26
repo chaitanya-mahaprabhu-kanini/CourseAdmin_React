@@ -12,7 +12,7 @@ function AdminLoginPage() {
   };
 
   return (
-    <div className="container" id="adminLogin">
+    <div className="container frosted" id="adminLogin">
       <h3 style = {{marginBottom: '1rem'}}>Admin Login</h3>
       <form onSubmit={handleSubmit}>
         <div className="mb-3">
@@ -25,7 +25,7 @@ function AdminLoginPage() {
         </div>
         <div id = "adminButtons">
         <button style = {{marginTop: '0.5rem'}} type="submit" className="btn btn-primary">Login</button>
-        <button style = {{marginTop: '0.5rem', marginLeft: '0.5rem'}} type="submit" className="btn btn-outline-dark" onClick = {homeButtonClickHandler}>Home Page</button>
+        <button style = {{marginTop: '0.5rem', marginLeft: '0.5rem'}} type="submit" className="btn btn-success" onClick = {homeButtonClickHandler}>Home Page</button>
         </div>
       </form>
     </div>
