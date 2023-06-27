@@ -4,6 +4,8 @@
 
 ![Screenshot (236)](https://github.com/chaitanya-mahaprabhu-kanini/CourseAdmin_React/assets/125178445/ff6683e8-957c-4afd-8906-852e313ac10f)
 
+![Screenshot (238)](https://github.com/chaitanya-mahaprabhu-kanini/CourseAdmin_React/assets/125178445/e416020e-e19c-4843-b6c5-6877e6ca165c)
+
 
 # Getting Started with Create React App
 
