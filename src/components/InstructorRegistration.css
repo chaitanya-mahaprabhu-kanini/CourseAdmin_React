@@ -4,3 +4,8 @@
     margin-top: 1.5%;
     color:white;
 }
+
+#instructorButtons{
+    display: flex;
+    flex-direction: row;
+}

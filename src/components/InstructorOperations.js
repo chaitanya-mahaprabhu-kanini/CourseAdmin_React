@@ -1,24 +1,46 @@
 import "./InstructorOperations.css";
-import { instructors } from "../constants/constants";
-import { useState } from "react";
+import { useState , useEffect} from "react";
 import { AdminPage } from "./AdminPage";
 import { DoubleStatistics } from "./DoubleStatistics";
+import {coursesKeys} from '../constants/constants';
 import { SingleStatistics } from "./SingleStatistics";
 
 const InstructorOperations = (props) => {
   const [instructorId, setInstructorId] = useState("");
+  const [instructors, setInstructors] = useState([]);
+  const [idData, setIdData] = useState([{}]);
 
-  const idData = [
-    {
-        id: "20",
-        name: "Amelia",
-        age: 25,
-        gender: "Female",
-        years: 3,
-        course: "Data Science",
-        status: "inactive",
+  useEffect(() => {
+    fetchInstructorById();
+  }, [instructorId]);
+  
+  useEffect(() => {
+    fetchInstructors();
+  }, []);
+
+  const fetchInstructors = async () => {
+    try {
+      const response = await fetch("https://localhost:7221/api/Instructors");
+      if (response.ok) {
+        const data = await response.json();
+        setInstructors(data);
+      } else {
+        console.error("Error fetching instructors:", response.statusText);
       }
-  ];
+    } catch (e) {console.log(e);}
+  };
+
+  const fetchInstructorById = async () => {
+    try {
+      const response = await fetch(`https://localhost:7221/api/Instructors/${instructorId}`);
+      if (response.ok) {
+        const data = await response.json();
+        setIdData([data]);
+      } else {
+        console.error("Error fetching instructors:", response.statusText);
+      }
+    } catch (e) {console.log(e);}
+  };
 
   const handleInputChange = (event) => {
     setInstructorId(event.target.value);
@@ -112,9 +134,6 @@ const InstructorOperations = (props) => {
               onChange={handleInputChange}
             />
           </div>
-          <button type="submit" className="btn btn-primary">
-            Submit
-          </button>
         </form>
         <table className="table mt-5">
           <thead>
@@ -133,7 +152,7 @@ const InstructorOperations = (props) => {
                 <td>{data.name}</td>
                 <td>{data.age}</td>
                 <td>{data.gender}</td>
-                <td>{data.course}</td>
+                <td>{coursesKeys[data.cid]}</td>
                 <td>{data.status}</td>
                 <td>{data.years}</td>
               </tr>

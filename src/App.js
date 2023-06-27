@@ -4,7 +4,6 @@ import { NotFound } from "./components/NotFound";
 import { Choice } from "./components/Choice";
 import { StudentRegistration } from "./components/StudentRegistration";
 import { InstructorRegistration } from "./components/InstructorRegistration";
-import { Instructors } from "./components/Instructors";
 import { Welcome } from "./components/Welcome";
 import { AdminLoginPage } from "./components/AdminLoginPage";
 import { AdminPage } from "./components/AdminPage";
@@ -19,7 +18,6 @@ function App() {
         <Route path = '/Choice' element = {<Choice/>} />
         <Route path = '/StudentRegistration' element = {<StudentRegistration/>} />
         <Route path = '/InstructorRegistration' element = {<InstructorRegistration/>} />
-        <Route path = '/Instructors' element = {<Instructors/>} />
         <Route path = '/AdminLogin' element = {<AdminLoginPage/>} />
         <Route path = '/AdminPage' element = {<AdminPage/>} />
         <Route path = '/StudentOperations' element = {<StudentOperations/>} />

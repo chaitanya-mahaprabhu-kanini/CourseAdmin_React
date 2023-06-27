@@ -1,20 +1,46 @@
 import { AdminPage } from "./AdminPage";
 import { DoubleStatistics } from "./DoubleStatistics";
 import "./StudentOperations.css";
-import { students } from "../constants/constants";
-import { useState } from "react";
+import { useEffect, useState } from "react";
+import {coursesKeys} from '../constants/constants';
 
 const StudentOperations = (props) => {
   const [studentId, setStudentId] = useState("");
+  const [students, setStudents] = useState([]);
+  const [idData, setIdData] = useState([{}]);
 
-  const idData = [
-    {
-      name: "Scarlett Ramirez",
-      age: 23,
-      gender: "Female",
-      course: "Machine Learning",
-    },
-  ];
+  useEffect(() => {
+    fetchStudentsById();
+  }, [studentId]);
+  
+  useEffect(() => {
+    fetchStudents();
+  }, []);
+
+  const fetchStudents = async () => {
+    try {
+      const response = await fetch("https://localhost:7221/api/Students");
+      if (response.ok) {
+        const data = await response.json();
+        setStudents(data);
+      } else {
+        console.error("Error fetching students:", response.statusText);
+      }
+    } catch (e) {console.log(e);}
+  };
+
+  const fetchStudentsById = async () => {
+    try {
+      const response = await fetch(`https://localhost:7221/api/Students/${studentId}
+      `);
+      if (response.ok) {
+        const data = await response.json();
+        setIdData([data]);
+      } else {
+        console.error("Error fetching students:", response.statusText);
+      }
+    } catch (e) {console.log(e);}
+  };
 
   const handleInputChange = (event) => {
     setStudentId(event.target.value);
@@ -38,7 +64,9 @@ const StudentOperations = (props) => {
 
       <div id="stats">
         <div>
-          <h4 id="statsText" className = "frosted">Gender Ratio</h4>
+          <h4 id="statsText" className="frosted">
+            Gender Ratio
+          </h4>
           <DoubleStatistics
             startColor={"steelblue"}
             endColor={"pink"}
@@ -66,7 +94,7 @@ const StudentOperations = (props) => {
                 <td>{data.name}</td>
                 <td>{data.age}</td>
                 <td>{data.gender}</td>
-                <td>{data.course}</td>
+                <td>{coursesKeys[data.cid]}</td>
               </tr>
             ))}
           </tbody>
@@ -87,9 +115,6 @@ const StudentOperations = (props) => {
               onChange={handleInputChange}
             />
           </div>
-          <button type="submit" className="btn btn-primary">
-            Submit
-          </button>
         </form>
         <table className="table mt-5">
           <thead>
@@ -106,7 +131,7 @@ const StudentOperations = (props) => {
                 <td>{data.name}</td>
                 <td>{data.age}</td>
                 <td>{data.gender}</td>
-                <td>{data.course}</td>
+                <td>{coursesKeys[data.cid]}</td>
               </tr>
             ))}
           </tbody>
