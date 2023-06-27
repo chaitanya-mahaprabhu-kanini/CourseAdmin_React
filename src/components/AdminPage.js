@@ -3,7 +3,7 @@ const AdminPage = () => {
   return (
     <nav className="navbar navbar-expand-lg navbar-dark bg-dark">
       <div className="container-fluid">
-        <a className="navbar-brand p-2" id = "brand">
+        <a className="navbar-brand p-2" id="brand">
           Admin Area
         </a>
         <button

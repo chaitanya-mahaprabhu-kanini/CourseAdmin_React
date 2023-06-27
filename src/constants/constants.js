@@ -14,4 +14,9 @@ export const coursesKeys = {
   5 : "UI/UX"
 };
 
+export const allowedUsers = {
+  'chaitanya' : '12345',
+  'kanini' : 'kanini'
+};
+
 export const genders = ["Male", "Female"];
