@@ -4,7 +4,14 @@ import "./InstructorRegistration.css";
 import { courses, genders } from "../constants/constants";
 
 const InstructorRegistration = (props) => {
-  const [instructor, setInstructor] = useState({name:"",age:"",gender:"",years:"",course:""});
+  const [instructor, setInstructor] = useState({
+    name: "",
+    age: "",
+    gender: "",
+    years: "",
+    status: "inactive",
+    cid: "",
+  });
 
   const changeHandler = (event) => {
     setInstructor((prev) => ({
@@ -14,21 +21,39 @@ const InstructorRegistration = (props) => {
   };
 
   const clickHandler = (event) => {
-    if (parseInt(instructor["age"], 10) < 17 || parseInt(instructor["age"], 10) > 100) {
-      alert("Legal adults allowed and above 100 of age too old for the website!");
-    } 
-    else if(Object.values(instructor).includes("") != true){
+    if (
+      parseInt(instructor["age"], 10) < 17 ||
+      parseInt(instructor["age"], 10) > 100
+    ) {
+      alert(
+        "Legal adults allowed and above 100 of age too old for the website!"
+      );
+    } else if (Object.values(instructor).includes("") != true) {
       console.log(instructor);
+      post();
       alert("You have been registered successfully!");
       window.location = "/";
-    }
-    else {
+    } else {
       alert("We don't like empty forms!");
     }
   };
 
   const homeHandler = (event) => {
     window.location = "/";
+  };
+
+  const post = () => {
+    fetch("https://localhost:7221/api/Instructors", {
+      method: "POST",
+      headers: { "content-type": "application/json" },
+      body: JSON.stringify(instructor),
+    })
+      .then((res) => {
+        return res.json();
+      })
+      .catch((err) => {
+        console.log(err);
+      });
   };
 
   return (
@@ -77,7 +102,7 @@ const InstructorRegistration = (props) => {
               Choose
             </option>
             {genders.map((data) => (
-              <option value={data}>{data}</option>
+              <option value={data.toString()}>{data}</option>
             ))}
           </select>
         </div>
@@ -95,20 +120,20 @@ const InstructorRegistration = (props) => {
           />
         </div>
         <div className="mb-3">
-          <label htmlFor="course" className="form-label">
+          <label htmlFor="cid" className="form-label">
             Course
           </label>
           <select
             className="form-select"
-            id="course"
-            name="course"
+            id="cid"
+            name="cid"
             onChange={changeHandler}
           >
             <option disabled selected>
               Choose
             </option>
-            {courses.map((data) => (
-              <option value={data}>{data}</option>
+            {courses.map((data, index) => (
+              <option value={index + 1}>{data}</option>
             ))}
           </select>
         </div>

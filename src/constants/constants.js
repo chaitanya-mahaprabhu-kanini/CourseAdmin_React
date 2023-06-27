@@ -7,11 +7,11 @@ export const courses = [
 ];
 
 export const coursesKeys = {
-  1 : "Machine Learning",
-  2 : "Full Stack Development",
-  3 : "Core Java",
-  4 : "Data Science",
-  5 : "UI/UX"
+  "1" : "Machine Learning",
+  "2" : "Full Stack Development",
+  "3" : "Core Java",
+  "4" : "Data Science",
+  "5" : "UI/UX"
 };
 
 export const allowedUsers = {

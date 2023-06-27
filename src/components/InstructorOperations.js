@@ -97,6 +97,7 @@ const InstructorOperations = (props) => {
         <table className="table">
           <thead>
             <tr>
+              <th>ID</th>
               <th>Name</th>
               <th>Age</th>
               <th>Gender</th>
@@ -108,6 +109,7 @@ const InstructorOperations = (props) => {
           <tbody>
             {instructors.map((data) => (
               <tr>
+                <td>{data.id}</td>
                 <td>{data.name}</td>
                 <td>{data.age}</td>
                 <td>{data.gender}</td>
@@ -138,6 +140,7 @@ const InstructorOperations = (props) => {
         <table className="table mt-5">
           <thead>
             <tr>
+              <th>ID</th>
               <th>Name</th>
               <th>Age</th>
               <th>Gender</th>
@@ -149,6 +152,7 @@ const InstructorOperations = (props) => {
           <tbody>
             {idData.map((data) => (
               <tr>
+                <td>{data.id}</td>
                 <td>{data.name}</td>
                 <td>{data.age}</td>
                 <td>{data.gender}</td>

@@ -2,7 +2,7 @@ import { AdminPage } from "./AdminPage";
 import { DoubleStatistics } from "./DoubleStatistics";
 import "./StudentOperations.css";
 import { useEffect, useState } from "react";
-import {coursesKeys} from '../constants/constants';
+import { coursesKeys } from "../constants/constants";
 
 const StudentOperations = (props) => {
   const [studentId, setStudentId] = useState("");
@@ -12,7 +12,7 @@ const StudentOperations = (props) => {
   useEffect(() => {
     fetchStudentsById();
   }, [studentId]);
-  
+
   useEffect(() => {
     fetchStudents();
   }, []);
@@ -26,12 +26,15 @@ const StudentOperations = (props) => {
       } else {
         console.error("Error fetching students:", response.statusText);
       }
-    } catch (e) {console.log(e);}
+    } catch (e) {
+      console.log(e);
+    }
   };
 
   const fetchStudentsById = async () => {
     try {
-      const response = await fetch(`https://localhost:7221/api/Students/${studentId}
+      const response =
+        await fetch(`https://localhost:7221/api/Students/${studentId}
       `);
       if (response.ok) {
         const data = await response.json();
@@ -39,7 +42,9 @@ const StudentOperations = (props) => {
       } else {
         console.error("Error fetching students:", response.statusText);
       }
-    } catch (e) {console.log(e);}
+    } catch (e) {
+      console.log(e);
+    }
   };
 
   const handleInputChange = (event) => {
@@ -119,6 +124,7 @@ const StudentOperations = (props) => {
         <table className="table mt-5">
           <thead>
             <tr>
+              <th>ID</th>
               <th>Name</th>
               <th>Age</th>
               <th>Gender</th>
@@ -128,10 +134,11 @@ const StudentOperations = (props) => {
           <tbody>
             {idData.map((data) => (
               <tr>
+                <td>{data.id}</td>
                 <td>{data.name}</td>
                 <td>{data.age}</td>
                 <td>{data.gender}</td>
-                <td>{coursesKeys[data.cid]}</td>
+                <td>{coursesKeys[parseInt(data.cid, 10)]}</td>
               </tr>
             ))}
           </tbody>
