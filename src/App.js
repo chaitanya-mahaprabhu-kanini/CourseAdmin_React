@@ -8,8 +8,8 @@ import { Instructors } from "./components/Instructors";
 import { Welcome } from "./components/Welcome";
 import { AdminLoginPage } from "./components/AdminLoginPage";
 import { AdminPage } from "./components/AdminPage";
-import { StatisticsComponent } from "./components/StatisticsComponent";
 import { StudentOperations } from "./components/StudentOperations";
+import { InstructorOperations } from "./components/InstructorOperations";
 
 function App() {
   return (
@@ -22,8 +22,8 @@ function App() {
         <Route path = '/Instructors' element = {<Instructors/>} />
         <Route path = '/AdminLogin' element = {<AdminLoginPage/>} />
         <Route path = '/AdminPage' element = {<AdminPage/>} />
-        <Route path = '/Statistics' element = {<StatisticsComponent/>} />
         <Route path = '/StudentOperations' element = {<StudentOperations/>} />
+        <Route path = '/InstructorOperations' element = {<InstructorOperations/>} />
         <Route path = '*' element = {<NotFound/>} />
       </Routes>
     </>

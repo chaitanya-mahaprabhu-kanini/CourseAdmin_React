@@ -1,35 +1,46 @@
+import "./InstructorOperations.css";
+import { instructors } from "../constants/constants";
+import { useState } from "react";
 import { AdminPage } from "./AdminPage";
 import { DoubleStatistics } from "./DoubleStatistics";
-import "./StudentOperations.css";
-import { students } from "../constants/constants";
-import { useState } from "react";
+import { SingleStatistics } from "./SingleStatistics";
 
-const StudentOperations = (props) => {
-  const [studentId, setStudentId] = useState("");
+const InstructorOperations = (props) => {
+  const [instructorId, setInstructorId] = useState("");
 
   const idData = [
     {
-      name: "Scarlett Ramirez",
-      age: 23,
-      gender: "Female",
-      course: "Machine Learning",
-    },
+        id: "20",
+        name: "Amelia",
+        age: 25,
+        gender: "Female",
+        years: 3,
+        course: "Data Science",
+        status: "inactive",
+      }
   ];
 
   const handleInputChange = (event) => {
-    setStudentId(event.target.value);
+    setInstructorId(event.target.value);
   };
 
   const handleSubmit = (event) => {
     event.preventDefault();
-    console.log("Submitted Student ID:", studentId);
+    console.log("Submitted Instructor ID:", instructorId);
   };
 
   let male = 0;
   let female = 0;
-  for (let student of students) {
-    if (student.gender.toLowerCase() === "male") male += 1;
+  for (let instructor of instructors) {
+    if (instructor.gender.toLowerCase() === "male") male += 1;
     else female += 1;
+  }
+
+  let experience = 0;
+  let count = 0;
+  for (let instructor of instructors) {
+    experience += instructor.years;
+    count += 1;
   }
 
   return (
@@ -38,7 +49,7 @@ const StudentOperations = (props) => {
 
       <div id="stats">
         <div>
-          <h4 id="statsText" className = "frosted">Gender Ratio</h4>
+          <h4 id = "statsText" className = "frosted">Gender Ratio</h4>
           <DoubleStatistics
             startColor={"steelblue"}
             endColor={"pink"}
@@ -46,6 +57,16 @@ const StudentOperations = (props) => {
             enTotal={female + 20}
             startText={"Male"}
             endText={"Female"}
+          />
+        </div>
+
+        <div>
+          <h4 id = "statsText" className = "frosted">Years Of Experience</h4>
+          <SingleStatistics
+            color={"orange"}
+            data={experience / count + 10}
+            startText={"0"}
+            endText={"100"}
           />
         </div>
       </div>
@@ -58,15 +79,19 @@ const StudentOperations = (props) => {
               <th>Age</th>
               <th>Gender</th>
               <th>Course</th>
+              <th>Status</th>
+              <th>Years Of Experience</th>
             </tr>
           </thead>
           <tbody>
-            {students.map((data) => (
+            {instructors.map((data) => (
               <tr>
                 <td>{data.name}</td>
                 <td>{data.age}</td>
                 <td>{data.gender}</td>
                 <td>{data.course}</td>
+                <td>{data.status}</td>
+                <td>{data.years}</td>
               </tr>
             ))}
           </tbody>
@@ -76,14 +101,14 @@ const StudentOperations = (props) => {
       <div className="container-fluid bg-light" id="getStudentById">
         <form onSubmit={handleSubmit}>
           <div className="mb-3">
-            <label htmlFor="studentId" className="form-label">
-              Student ID
+            <label htmlFor="instructorID" className="form-label">
+              Instructor ID
             </label>
             <input
               type="text"
               className="form-control"
-              id="studentId"
-              value={studentId}
+              id="instructorID"
+              value={instructorId}
               onChange={handleInputChange}
             />
           </div>
@@ -98,6 +123,8 @@ const StudentOperations = (props) => {
               <th>Age</th>
               <th>Gender</th>
               <th>Course</th>
+              <th>Status</th>
+              <th>Years Of Experience</th>
             </tr>
           </thead>
           <tbody>
@@ -107,6 +134,8 @@ const StudentOperations = (props) => {
                 <td>{data.age}</td>
                 <td>{data.gender}</td>
                 <td>{data.course}</td>
+                <td>{data.status}</td>
+                <td>{data.years}</td>
               </tr>
             ))}
           </tbody>
@@ -116,4 +145,4 @@ const StudentOperations = (props) => {
   );
 };
 
-export { StudentOperations };
+export { InstructorOperations };

@@ -7,6 +7,10 @@ function AdminLoginPage() {
     window.location = '/';  
   }
 
+  const loginButtonClickHandler = (e) => {
+    window.location = '/AdminPage';  
+  }
+
   const handleSubmit = (e) => {
     e.preventDefault();
   };
@@ -24,7 +28,7 @@ function AdminLoginPage() {
           <input type="password" className="form-control" id="password" />
         </div>
         <div id = "adminButtons">
-        <button style = {{marginTop: '0.5rem'}} type="submit" className="btn btn-primary">Login</button>
+        <button style = {{marginTop: '0.5rem'}} type="submit" className="btn btn-primary" onClick = {loginButtonClickHandler}>Login</button>
         <button style = {{marginTop: '0.5rem', marginLeft: '0.5rem'}} type="submit" className="btn btn-success" onClick = {homeButtonClickHandler}>Home Page</button>
         </div>
       </form>

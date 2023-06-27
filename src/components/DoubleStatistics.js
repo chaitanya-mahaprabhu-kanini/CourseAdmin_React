@@ -1,7 +1,7 @@
 import React, { useEffect } from "react";
-import "./StatisticsComponent.css";
+import "./DoubleStatistics.css";
 
-const StatisticsComponent = (props) => {
+const DoubleStatistics = (props) => {
   const startWidth = `${props.stTotal}`;
   const endWidth = `${props.enTotal}`;
   return (
@@ -30,4 +30,4 @@ const StatisticsComponent = (props) => {
   );
 };
 
-export { StatisticsComponent };
+export { DoubleStatistics };
