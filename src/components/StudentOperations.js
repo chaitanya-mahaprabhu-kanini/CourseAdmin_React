@@ -33,9 +33,9 @@ const StudentOperations = (props) => {
 
   const fetchStudentsById = async () => {
     try {
-      const response =
-        await fetch(`https://localhost:7221/api/Students/${studentId}
-      `);
+      const response = await fetch(
+        `https://localhost:7221/api/Students/${studentId}`
+      );
       if (response.ok) {
         const data = await response.json();
         setIdData([data]);
@@ -54,6 +54,26 @@ const StudentOperations = (props) => {
   const handleSubmit = (event) => {
     event.preventDefault();
     console.log("Submitted Student ID:", studentId);
+  };
+
+  const deleteStudent = async (id) => {
+    try {
+      const response = await fetch(
+        `https://localhost:7221/api/Students/${id}`,
+        {
+          method: "DELETE",
+        }
+      );
+      if (response.ok) {
+        console.log("Student deleted successfully");
+        // Refresh the list of students
+        fetchStudents();
+      } else {
+        console.error("Error deleting student:", response.statusText);
+      }
+    } catch (e) {
+      console.log(e);
+    }
   };
 
   let male = 0;
@@ -87,19 +107,25 @@ const StudentOperations = (props) => {
         <table className="table">
           <thead>
             <tr>
+              <th>ID</th>
               <th>Name</th>
               <th>Age</th>
               <th>Gender</th>
               <th>Course</th>
+              <th>Delete</th> {/* New column for the delete button */}
             </tr>
           </thead>
           <tbody>
             {students.map((data) => (
-              <tr>
+              <tr key={data.id}>
+                <td>{data.id}</td>
                 <td>{data.name}</td>
                 <td>{data.age}</td>
                 <td>{data.gender}</td>
                 <td>{coursesKeys[data.cid]}</td>
+                <td>
+                  <button className = "btn btn-danger" onClick={() => deleteStudent(data.id)}>Delete</button>
+                </td>
               </tr>
             ))}
           </tbody>
@@ -133,7 +159,7 @@ const StudentOperations = (props) => {
           </thead>
           <tbody>
             {idData.map((data) => (
-              <tr>
+              <tr key={data.id}>
                 <td>{data.id}</td>
                 <td>{data.name}</td>
                 <td>{data.age}</td>

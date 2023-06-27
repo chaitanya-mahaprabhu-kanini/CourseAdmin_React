@@ -1,8 +1,8 @@
 import "./InstructorOperations.css";
-import { useState , useEffect} from "react";
+import { useState, useEffect } from "react";
 import { AdminPage } from "./AdminPage";
 import { DoubleStatistics } from "./DoubleStatistics";
-import {coursesKeys} from '../constants/constants';
+import { coursesKeys } from "../constants/constants";
 import { SingleStatistics } from "./SingleStatistics";
 
 const InstructorOperations = (props) => {
@@ -13,7 +13,7 @@ const InstructorOperations = (props) => {
   useEffect(() => {
     fetchInstructorById();
   }, [instructorId]);
-  
+
   useEffect(() => {
     fetchInstructors();
   }, []);
@@ -27,19 +27,25 @@ const InstructorOperations = (props) => {
       } else {
         console.error("Error fetching instructors:", response.statusText);
       }
-    } catch (e) {console.log(e);}
+    } catch (e) {
+      console.log(e);
+    }
   };
 
   const fetchInstructorById = async () => {
     try {
-      const response = await fetch(`https://localhost:7221/api/Instructors/${instructorId}`);
+      const response = await fetch(
+        `https://localhost:7221/api/Instructors/${instructorId}`
+      );
       if (response.ok) {
         const data = await response.json();
         setIdData([data]);
       } else {
         console.error("Error fetching instructors:", response.statusText);
       }
-    } catch (e) {console.log(e);}
+    } catch (e) {
+      console.log(e);
+    }
   };
 
   const handleInputChange = (event) => {
@@ -49,6 +55,26 @@ const InstructorOperations = (props) => {
   const handleSubmit = (event) => {
     event.preventDefault();
     console.log("Submitted Instructor ID:", instructorId);
+  };
+
+  const deleteInstructor = async (id) => {
+    try {
+      const response = await fetch(
+        `https://localhost:7221/api/Instructors/${id}`,
+        {
+          method: "DELETE",
+        }
+      );
+      if (response.ok) {
+        console.log("Instructor deleted successfully");
+        // Remove the deleted instructor from the state
+        setInstructors(instructors.filter((instructor) => instructor.id !== id));
+      } else {
+        console.error("Error deleting instructor:", response.statusText);
+      }
+    } catch (e) {
+      console.log(e);
+    }
   };
 
   let male = 0;
@@ -71,7 +97,9 @@ const InstructorOperations = (props) => {
 
       <div id="stats">
         <div>
-          <h4 id = "statsText" className = "frosted">Gender Ratio</h4>
+          <h4 id="statsText" className="frosted">
+            Gender Ratio
+          </h4>
           <DoubleStatistics
             startColor={"steelblue"}
             endColor={"pink"}
@@ -83,7 +111,9 @@ const InstructorOperations = (props) => {
         </div>
 
         <div>
-          <h4 id = "statsText" className = "frosted">Years Of Experience</h4>
+          <h4 id="statsText" className="frosted">
+            Years Of Experience
+          </h4>
           <SingleStatistics
             color={"orange"}
             data={experience / count + 10}
@@ -104,11 +134,12 @@ const InstructorOperations = (props) => {
               <th>Course</th>
               <th>Status</th>
               <th>Years Of Experience</th>
+              <th>Delete</th>
             </tr>
           </thead>
           <tbody>
             {instructors.map((data) => (
-              <tr>
+              <tr key={data.id}>
                 <td>{data.id}</td>
                 <td>{data.name}</td>
                 <td>{data.age}</td>
@@ -116,6 +147,14 @@ const InstructorOperations = (props) => {
                 <td>{coursesKeys[data.cid]}</td>
                 <td>{data.status}</td>
                 <td>{data.years}</td>
+                <td>
+                  <button
+                    onClick={() => deleteInstructor(data.id)}
+                    className="btn btn-danger"
+                  >
+                    Delete
+                  </button>
+                </td>
               </tr>
             ))}
           </tbody>
@@ -151,7 +190,7 @@ const InstructorOperations = (props) => {
           </thead>
           <tbody>
             {idData.map((data) => (
-              <tr>
+              <tr key={data.id}>
                 <td>{data.id}</td>
                 <td>{data.name}</td>
                 <td>{data.age}</td>
