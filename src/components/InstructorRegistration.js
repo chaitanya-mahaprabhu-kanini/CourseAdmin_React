@@ -4,7 +4,7 @@ import "./InstructorRegistration.css";
 import { courses, genders } from "../constants/constants";
 
 const InstructorRegistration = (props) => {
-  const [instructor, setInstructor] = useState({});
+  const [instructor, setInstructor] = useState({name:"",age:"",gender:"",years:"",course:""});
 
   const changeHandler = (event) => {
     setInstructor((prev) => ({
@@ -12,10 +12,19 @@ const InstructorRegistration = (props) => {
       [event.target.name]: event.target.value,
     }));
   };
+
   const clickHandler = (event) => {
-    console.log(instructor);
-    alert("You have been registered successfully!");
-    window.location = "/";
+    if (parseInt(instructor["age"], 10) < 17 || parseInt(instructor["age"], 10) > 100) {
+      alert("Legal adults allowed and above 100 of age too old for the website!");
+    } 
+    else if(Object.values(instructor).includes("") != true){
+      console.log(instructor);
+      alert("You have been registered successfully!");
+      window.location = "/";
+    }
+    else {
+      alert("We don't like empty forms!");
+    }
   };
 
   const homeHandler = (event) => {
@@ -48,6 +57,8 @@ const InstructorRegistration = (props) => {
             className="form-control"
             id="age"
             name="age"
+            min="18"
+            max="100"
             onChange={changeHandler}
             required
           />
@@ -62,7 +73,9 @@ const InstructorRegistration = (props) => {
             name="gender"
             onChange={changeHandler}
           >
-            <option disabled selected>Choose</option>
+            <option disabled selected>
+              Choose
+            </option>
             {genders.map((data) => (
               <option value={data}>{data}</option>
             ))}
@@ -91,7 +104,9 @@ const InstructorRegistration = (props) => {
             name="course"
             onChange={changeHandler}
           >
-            <option disabled selected>Choose</option>
+            <option disabled selected>
+              Choose
+            </option>
             {courses.map((data) => (
               <option value={data}>{data}</option>
             ))}

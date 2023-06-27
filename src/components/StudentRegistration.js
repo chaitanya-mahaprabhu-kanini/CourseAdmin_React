@@ -1,10 +1,15 @@
 import { useState, useEffect } from "react";
 import teacher from "../assets/images/teacher.jpg";
 import "./StudentRegistration.css";
-import { courses, genders} from "../constants/constants";
+import { courses, genders } from "../constants/constants";
 
 const StudentRegistration = (props) => {
-  const [student, setStudent] = useState({});
+  const [student, setStudent] = useState({
+    name: "",
+    age: "",
+    gender: "",
+    course: "",
+  });
 
   const changeHandler = (event) => {
     setStudent((prev) => ({
@@ -14,9 +19,17 @@ const StudentRegistration = (props) => {
   };
 
   const clickHandler = (event) => {
-    console.log(student);
-    alert("You have been registered successfully!");
-    window.location = "/";
+    if (parseInt(student["age"], 10) < 17 || parseInt(student["age"], 10) > 100) {
+      alert("Legal adults allowed and above 100 of age too old for the website!");
+    } 
+    else if(Object.values(student).includes("") != true){
+      console.log(student);
+      alert("You have been registered successfully!");
+      window.location = "/";
+    }
+    else {
+      alert("We don't like empty forms!");
+    }
   };
 
   const homeHandler = (event) => {
@@ -50,6 +63,8 @@ const StudentRegistration = (props) => {
             id="age"
             name="age"
             onChange={changeHandler}
+            min = "18"
+            max = "100"
             required
           />
         </div>
@@ -62,8 +77,11 @@ const StudentRegistration = (props) => {
             id="gender"
             name="gender"
             onChange={changeHandler}
+            required
           >
-            <option disabled selected>Choose</option>
+            <option disabled selected>
+              Choose
+            </option>
             {genders.map((data) => (
               <option value={data}>{data}</option>
             ))}
@@ -79,7 +97,9 @@ const StudentRegistration = (props) => {
             name="course"
             onChange={changeHandler}
           >
-            <option disabled selected>Choose</option>
+            <option disabled selected>
+              Choose
+            </option>
             {courses.map((data) => (
               <option value={data}>{data}</option>
             ))}
