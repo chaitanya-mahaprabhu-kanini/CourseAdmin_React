@@ -111,7 +111,7 @@ const InstructorOperations = (props) => {
                 <td>{data.name}</td>
                 <td>{data.age}</td>
                 <td>{data.gender}</td>
-                <td>{data.course}</td>
+                <td>{coursesKeys[data.cid]}</td>
                 <td>{data.status}</td>
                 <td>{data.years}</td>
               </tr>

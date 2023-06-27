@@ -1,0 +1,23 @@
+#brand {
+  border: 2px solid white;
+  border-radius: 1rem;
+  transition: all 1s ease-in;
+  animation: brand 3s infinite;
+}
+
+@keyframes brand {
+  0% {
+    background-color: white;
+    color: black;
+  }
+
+  50% {
+    background-color: black;
+    color: orange;
+  }
+
+  100% {
+    background-color: white;
+    color: black;
+  }
+}
