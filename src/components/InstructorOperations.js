@@ -9,6 +9,7 @@ const InstructorOperations = (props) => {
   const [instructorId, setInstructorId] = useState("");
   const [instructors, setInstructors] = useState([]);
   const [idData, setIdData] = useState([{}]);
+  const [toggle, setToggle] = useState({});
 
   useEffect(() => {
     fetchInstructorById();
@@ -76,6 +77,62 @@ const InstructorOperations = (props) => {
       console.log(e);
     }
   };
+
+  const updateStatus = async (id) => {
+    try {
+      const response = await fetch(
+        `https://localhost:7221/api/Instructors/${id}`,
+        {
+          method: "PUT",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify(toggle),
+        }
+      );
+      if (response.ok) {
+        console.log("Instructor status updated successfully");
+        console.log(toggle);
+        setInstructors(
+          instructors.map((instructor) =>
+            instructor.id === id
+              ? toggle
+              : instructor
+          )
+        );
+      } else {
+        console.error("Error updating instructor status:", response.statusText);
+        console.log(toggle);
+      }
+    } catch (e) {
+      console.log(e);
+    }
+  };
+
+  useEffect(() => {updateStatus(toggle.id)}, [toggle]);
+
+  const toggleInstructor = (data) => {
+    if(data.status === 'active'){
+      setToggle({
+        "id": data.id,
+        "name": `${data.name}`,
+        "age": data.age,
+        "gender": `${data.gender}`,
+        "years": data.years,
+        "cid": data.cid,
+        "status": "inactive"
+      });}
+    else{
+    setToggle({
+      "id": data.id,
+      "name": `${data.name}`,
+      "age": data.age,
+      "gender": `${data.gender}`,
+      "years": data.years,
+      "cid": data.cid,
+      "status": "active"
+    });}
+  }
 
   let male = 0;
   let female = 0;
@@ -145,7 +202,7 @@ const InstructorOperations = (props) => {
                 <td>{data.age}</td>
                 <td>{data.gender}</td>
                 <td>{coursesKeys[data.cid]}</td>
-                <td>{data.status}</td>
+                <td id = "status" style={{color: 'white', backgroundColor: `${data.status === 'active' ? 'green' : 'red'}`}}>{data.status === 'active' ? 'A' : 'IA'}</td>
                 <td>{data.years}</td>
                 <td>
                   <button
@@ -153,6 +210,14 @@ const InstructorOperations = (props) => {
                     className="btn btn-danger"
                   >
                     Delete
+                  </button>
+                </td>
+                <td>
+                  <button
+                    onClick={() => toggleInstructor(data)}
+                    className="btn btn-warning"
+                  >
+                    Toggle Status
                   </button>
                 </td>
               </tr>
