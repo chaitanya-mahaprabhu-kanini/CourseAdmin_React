@@ -191,7 +191,6 @@ const InstructorOperations = (props) => {
               <th>Course</th>
               <th>Status</th>
               <th>Years Of Experience</th>
-              <th>Delete</th>
             </tr>
           </thead>
           <tbody>

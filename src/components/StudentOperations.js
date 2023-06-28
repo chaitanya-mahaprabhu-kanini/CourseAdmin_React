@@ -112,7 +112,6 @@ const StudentOperations = (props) => {
               <th>Age</th>
               <th>Gender</th>
               <th>Course</th>
-              <th>Delete</th> {/* New column for the delete button */}
             </tr>
           </thead>
           <tbody>
