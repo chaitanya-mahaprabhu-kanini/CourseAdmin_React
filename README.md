@@ -4,7 +4,11 @@
 
 ![Screenshot (236)](https://github.com/chaitanya-mahaprabhu-kanini/CourseAdmin_React/assets/125178445/ff6683e8-957c-4afd-8906-852e313ac10f)
 
-![Screenshot (246)](https://github.com/chaitanya-mahaprabhu-kanini/CourseAdmin_React/assets/125178445/8bb7fce4-93cd-4ba6-9d84-6db08e08aa4f)
+![Screenshot (247)](https://github.com/chaitanya-mahaprabhu-kanini/CourseAdmin_React/assets/125178445/910bc60c-0d40-4357-8b08-533f8ab32d60)
+
+![Screenshot (248)](https://github.com/chaitanya-mahaprabhu-kanini/CourseAdmin_React/assets/125178445/f782c7e3-396e-4a22-900f-853ace7587df)
+
+
 
 
 
