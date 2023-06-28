@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 import teacher from "../assets/images/teacher.jpg";
 import "./InstructorRegistration.css";
-import { courses, genders } from "../constants/constants";
+import { genders } from "../constants/constants";
 
 const InstructorRegistration = (props) => {
   const [instructor, setInstructor] = useState({
@@ -12,6 +12,23 @@ const InstructorRegistration = (props) => {
     status: "inactive",
     cid: "",
   });
+
+  const [courses, setCourses] = useState([]);
+
+  useEffect(() => {courseSetter()},[]);
+  const courseSetter = async () => {
+    try {
+      const response = await fetch("https://localhost:7221/api/Courses");
+      if (response.ok) {
+        const data = await response.json();
+        setCourses(data);
+      } else {
+        console.error("Error fetching instructors:", response.statusText);
+      }
+    } catch (e) {
+      console.log(e);
+    }
+  };
 
   const changeHandler = (event) => {
     setInstructor((prev) => ({
@@ -133,7 +150,7 @@ const InstructorRegistration = (props) => {
               Choose
             </option>
             {courses.map((data, index) => (
-              <option value={index + 1}>{data}</option>
+              <option value={data.cid}>{data.courseName}</option>
             ))}
           </select>
         </div>

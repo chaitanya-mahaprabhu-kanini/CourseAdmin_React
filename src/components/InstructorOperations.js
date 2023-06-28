@@ -68,7 +68,6 @@ const InstructorOperations = (props) => {
       );
       if (response.ok) {
         console.log("Instructor deleted successfully");
-        // Remove the deleted instructor from the state
         setInstructors(instructors.filter((instructor) => instructor.id !== id));
       } else {
         console.error("Error deleting instructor:", response.statusText);
@@ -201,7 +200,7 @@ const InstructorOperations = (props) => {
                 <td>{data.age}</td>
                 <td>{data.gender}</td>
                 <td>{coursesKeys[data.cid]}</td>
-                <td id = "status" style={{color: 'white', backgroundColor: `${data.status === 'active' ? 'green' : 'red'}`}}>{data.status === 'active' ? 'A' : 'IA'}</td>
+                <td id = "status" style={{color: 'white', backgroundColor: `${data.status === 'active' ? 'green' : 'red'}`}}>{data.status === 'active' ? '👍' : '👎'}</td>
                 <td>{data.years}</td>
                 <td>
                   <button
