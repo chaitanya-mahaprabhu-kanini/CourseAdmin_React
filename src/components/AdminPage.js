@@ -31,7 +31,7 @@ const AdminPage = () => {
             </li>
             <li className="nav-item">
               <a className="nav-link" href="/">
-                Home
+                Log Out
               </a>
             </li>
           </ul>

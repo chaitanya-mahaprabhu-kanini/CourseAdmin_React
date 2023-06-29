@@ -9,10 +9,12 @@ import { AdminLoginPage } from "./components/AdminLoginPage";
 import { AdminPage } from "./components/AdminPage";
 import { StudentOperations } from "./components/StudentOperations";
 import { InstructorOperations } from "./components/InstructorOperations";
+import { SharedData } from "./contexts/SharedData";
 
 function App() {
   return (
     <>
+      <SharedData>
       <Routes>
         <Route path = '' element = {<Welcome/>} />
         <Route path = '/Choice' element = {<Choice/>} />
@@ -24,6 +26,7 @@ function App() {
         <Route path = '/InstructorOperations' element = {<InstructorOperations/>} />
         <Route path = '*' element = {<NotFound/>} />
       </Routes>
+      </SharedData>
     </>
   );
 }

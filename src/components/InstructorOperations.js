@@ -1,11 +1,14 @@
 import "./InstructorOperations.css";
-import { useState, useEffect } from "react";
+import { useState, useEffect, useContext } from "react";
 import { AdminPage } from "./AdminPage";
 import { DoubleStatistics } from "./DoubleStatistics";
-import { coursesKeys } from "../constants/constants";
 import { SingleStatistics } from "./SingleStatistics";
+import { context, SharedData } from "../contexts/SharedData";
+
 
 const InstructorOperations = (props) => {
+  const con = useContext(context);
+
   const [instructorId, setInstructorId] = useState("");
   const [instructors, setInstructors] = useState([]);
   const [idData, setIdData] = useState([{}]);
@@ -199,7 +202,7 @@ const InstructorOperations = (props) => {
                 <td>{data.name}</td>
                 <td>{data.age}</td>
                 <td>{data.gender}</td>
-                <td>{coursesKeys[data.cid]}</td>
+                <td>{con.courses[data.cid-1].courseName}</td>
                 <td id = "status" style={{color: 'white', backgroundColor: `${data.status === 'active' ? 'green' : 'red'}`}}>{data.status === 'active' ? '👍' : '👎'}</td>
                 <td>{data.years}</td>
                 <td>
@@ -258,7 +261,7 @@ const InstructorOperations = (props) => {
                 <td>{data.name}</td>
                 <td>{data.age}</td>
                 <td>{data.gender}</td>
-                <td>{coursesKeys[data.cid]}</td>
+                <td>{}</td>
                 <td>{data.status}</td>
                 <td>{data.years}</td>
               </tr>

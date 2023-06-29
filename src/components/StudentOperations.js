@@ -2,9 +2,12 @@ import { AdminPage } from "./AdminPage";
 import { DoubleStatistics } from "./DoubleStatistics";
 import "./StudentOperations.css";
 import { useEffect, useState } from "react";
-import { coursesKeys } from "../constants/constants";
+import { useContext } from "react";
+import { context, SharedData } from "../contexts/SharedData";
 
 const StudentOperations = (props) => {
+  const con = useContext(context);
+
   const [studentId, setStudentId] = useState("");
   const [students, setStudents] = useState([]);
   const [idData, setIdData] = useState([{}]);
@@ -22,6 +25,7 @@ const StudentOperations = (props) => {
       const response = await fetch("https://localhost:7221/api/Students");
       if (response.ok) {
         const data = await response.json();
+        console.log(con.data);
         setStudents(data);
       } else {
         console.error("Error fetching students:", response.statusText);
@@ -121,7 +125,7 @@ const StudentOperations = (props) => {
                 <td>{data.name}</td>
                 <td>{data.age}</td>
                 <td>{data.gender}</td>
-                <td>{coursesKeys[data.cid]}</td>
+                <td>{con.courses[data.cid-1].courseName}</td>
                 <td>
                   <button className = "btn btn-danger" onClick={() => deleteStudent(data.id)}>Delete</button>
                 </td>
@@ -163,7 +167,7 @@ const StudentOperations = (props) => {
                 <td>{data.name}</td>
                 <td>{data.age}</td>
                 <td>{data.gender}</td>
-                <td>{coursesKeys[parseInt(data.cid, 10)]}</td>
+                <td>{}</td>
               </tr>
             ))}
           </tbody>

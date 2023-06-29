@@ -1,9 +1,12 @@
 import { useState, useEffect } from "react";
 import teacher from "../assets/images/teacher.jpg";
 import "./StudentRegistration.css";
-import { genders } from "../constants/constants";
+import { context, SharedData } from "../contexts/SharedData";
+import { useContext } from "react";
 
 const StudentRegistration = (props) => {
+  const data = useContext(context);
+
   const [student, setStudent] = useState({
     name: "",
     age: "",
@@ -11,28 +14,14 @@ const StudentRegistration = (props) => {
     cid: "",
   });
   
-  const [courses, setCourses] = useState([]);
-
-  useEffect(() => {courseSetter()},[]);
-  const courseSetter = async () => {
-    try {
-      const response = await fetch("https://localhost:7221/api/Courses");
-      if (response.ok) {
-        const data = await response.json();
-        setCourses(data);
-      } else {
-        console.error("Error fetching instructors:", response.statusText);
-      }
-    } catch (e) {
-      console.log(e);
-    }
-  };
 
   const changeHandler = (event) => {
       setStudent((prev) => ({
         ...prev,
         [event.target.name]: event.target.value,
       }));
+
+      console.log(data.courses);
   };
 
   const clickHandler = (event) => {
@@ -117,7 +106,7 @@ const StudentRegistration = (props) => {
             <option disabled selected>
               Choose
             </option>
-            {genders.map((data) => (
+            {data.genders.map((data) => (
               <option value={data}>{data}</option>
             ))}
           </select>
@@ -135,8 +124,8 @@ const StudentRegistration = (props) => {
             <option disabled selected>
               Choose
             </option>
-            {courses.map((data, index) => (
-              <option value={data.cid}>{data.courseName}</option>
+            {data.courses.map((course) => (
+              <option value={course.cid}>{course.courseName}</option>
             ))}
           </select>
         </div>
