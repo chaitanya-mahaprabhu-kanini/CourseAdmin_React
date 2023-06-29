@@ -21,3 +21,13 @@
     color: black;
   }
 }
+
+#logOut{
+  transition: all 0.5s ease-in;
+  border-radius: 2rem;
+}
+
+#logOut:hover{
+  background-color: red;
+  color: white;
+}
